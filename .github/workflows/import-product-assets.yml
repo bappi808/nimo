@@ -1,0 +1,31 @@
+name: Import official NIMO product images
+on:
+  push:
+    branches: [release/production-readiness]
+    paths:
+      - .github/workflows/import-product-assets.yml
+      - scripts/import-product-images.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch genuine product images from current live site
+        run: node scripts/import-product-images.mjs
+      - name: Commit verified images only on this branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/products/cutouts/
+          git diff --cached --quiet && exit 0
+          git commit -m "Assets: preserve official NIMO product images locally"
+          git push origin "HEAD:$GITHUB_REF_NAME"
