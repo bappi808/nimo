@@ -1,0 +1,36 @@
+name: Browser QA
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  responsive-browser-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Next.js dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install Playwright Chromium (CI only)
+        run: |
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Build production application
+        run: npm run build
+      - name: Test desktop, tablet, and mobile browsers
+        run: node scripts/browser-qa.mjs
+      - name: Keep QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nimo-responsive-qa
+          path: qa-screenshots/
+          if-no-files-found: ignore
+          retention-days: 7
