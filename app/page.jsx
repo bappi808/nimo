@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
-import {highlights} from '@/data/products';
+import {highlights, categories as productCategories} from '@/data/products';
 import HomeHero from '@/components/HomeHero';
-const categories=[['Rice & Rice Products','Rice'],['Snacks','Snacks'],['Pickles & Condiments','Pickles'],['Bakery','Bakery'],['Spices & Seasonings','Spices']];
+// Keep homepage category navigation in sync with the live product catalogue.
+const categoryLabels = {
+  'Rice & Rice Products': 'Rice', 'Pickles & Condiments': 'Pickles',
+  'Spices & Seasonings': 'Spices', 'Herbs & Pantry': 'Herbs',
+};
+const categories = productCategories.filter(name => name !== 'All Products')
+  .map(name => [name, categoryLabels[name] || name]);
 export default function Home(){return <>
  <HomeHero/>
  <section className="trust-strip"><div className="container trust-grid"><div><strong>Bangladesh</strong><span>Manufacturing origin</span></div><div><strong>Multi-category</strong><span>FMCG food portfolio</span></div><div><strong>Buyer focused</strong><span>International coordination</span></div><div><strong>Product-led</strong><span>Export conversations</span></div></div></section>
