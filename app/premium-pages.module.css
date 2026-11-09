@@ -1,0 +1,78 @@
+
+.shell{color:#302c25;background:#fff}
+.hero{background:#f7f3e9;position:relative;overflow:hidden}
+.heroGrid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);align-items:center;gap:75px;min-height:570px;padding-top:76px;padding-bottom:76px}
+.kicker{font-size:10px;letter-spacing:2.3px;text-transform:uppercase;color:#9b3c34;font-weight:800;line-height:1.5;margin:0 0 25px}
+.title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(50px,5.2vw,77px);line-height:1.09;letter-spacing:-2.7px;font-weight:400;margin:0}
+.title em,.sectionTitle em,.bandTitle em{font-weight:400;color:#98332e}
+.lead{font-size:16px;line-height:1.9;color:#6f675b;max-width:540px;margin:26px 0 0}
+.panel{height:390px;background:linear-gradient(145deg,#e8e1d2,#d9cbb6);border:1px solid #e3d9c8;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:35px}
+.panel:before,.panel:after{content:"";position:absolute;pointer-events:none;border-radius:50%;border:1px solid #fcfaf0a6}
+.panel:before{width:290px;height:290px;top:42px}
+.panel:after{width:405px;height:405px;top:-18px;border-color:#fcfaf052}
+.panelEyebrow{font-size:10px;letter-spacing:2.1px;text-transform:uppercase;color:#94433a;font-weight:800;position:relative;z-index:1;margin:0 0 19px}
+.panelTitle{font-family:Georgia,"Times New Roman",serif;font-size:clamp(31px,3.4vw,50px);font-weight:400;line-height:1.17;position:relative;z-index:1;letter-spacing:-1.5px;margin:0}
+.panelCaption{position:absolute;bottom:23px;color:#7f705e;font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+.panelLogo{width:min(62%,260px);height:auto;position:relative;z-index:1}
+.pill{display:inline-block;border:1px solid #cbbba4;color:#776958;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;padding:11px 15px;margin-top:28px}
+.section{padding:100px 0}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:90px;align-items:start}
+.sectionTitle{font-family:Georgia,"Times New Roman",serif;font-size:clamp(37px,4vw,55px);line-height:1.16;letter-spacing:-1.7px;font-weight:400;margin:0}
+.prose{font-size:16px;line-height:1.95;color:#6b645a;margin:0 0 20px}
+.prose:last-child{margin-bottom:0}
+.sectionLight{background:#fbf9f4}
+.sectionIntro{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:38px}
+.sectionIntro .lead{max-width:390px;margin:0;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{border:1px solid #ebe6dc;background:#fff;padding:35px 29px;min-height:245px}
+.cardIndex{font-size:11px;letter-spacing:2px;color:#a5443c;font-weight:700}
+.card h3{font-family:Georgia,"Times New Roman",serif;font-size:27px;font-weight:400;line-height:1.2;margin:35px 0 13px;letter-spacing:-.7px}
+.card p{font-size:14px;line-height:1.8;color:#746b60;margin:0}
+.brandStrip{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid #e6e1d7;border-bottom:1px solid #e6e1d7;margin-top:46px}
+.brandStripItem{padding:23px 10px 23px 0}
+.brandStripItem+.brandStripItem{border-left:1px solid #e6e1d7;padding-left:28px}
+.brandStripItem strong{font-family:Georgia,"Times New Roman",serif;display:block;font-size:23px;line-height:1.3;font-weight:400}
+.brandStripItem span{font-size:11px;color:#8c8070;line-height:1.5;display:block;margin-top:6px}
+.band{background:#362f28;color:#fff;padding:67px 0}
+.bandGrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:70px;align-items:center}
+.band .kicker{color:#e4b9a6}
+.bandTitle{font-family:Georgia,"Times New Roman",serif;font-size:clamp(35px,4vw,52px);line-height:1.18;font-weight:400;letter-spacing:-1.2px;margin:0}
+.bandTitle em{color:#eac9aa}
+.bandText{font-size:14px;color:#dbd0c3;line-height:1.8;margin:0 0 24px}
+.bandButton{display:inline-flex;justify-content:space-between;gap:30px;background:#f2e4cc;color:#382c23;padding:17px 20px;font-weight:800;font-size:12px;transition:background .2s}
+.bandButton:hover{background:#fff0d7}
+.bandButton:focus-visible,.card a:focus-visible,.link:focus-visible{outline:2px solid #ae473f;outline-offset:4px}
+.link{display:inline-flex;gap:17px;color:#98332e;font-weight:800;font-size:12px;border-bottom:1px solid #b38b7e;padding-bottom:9px;margin-top:22px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:45px;border:1px solid #eae5dc}
+.step{padding:37px 25px 42px;background:#fff;border-right:1px solid #eae5dc}
+.step:last-child{border-right:0}
+.stepNumber{font-size:12px;color:#a6433a;letter-spacing:2px;font-weight:800}
+.step h3{font-family:Georgia,"Times New Roman",serif;font-size:24px;font-weight:400;line-height:1.25;min-height:62px;margin:38px 0 13px}
+.step p{font-size:13px;line-height:1.8;color:#776e62;margin:0}
+.tagRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:27px}
+.tag{border:1px solid #ddd2c1;padding:10px 13px;color:#71655a;font-size:11px;letter-spacing:.4px}
+.detailList{margin-top:34px;border-top:1px solid #eae5dc}
+.detail{display:flex;justify-content:space-between;gap:25px;border-bottom:1px solid #eae5dc;padding:19px 0;font-size:13px}
+.detail span{color:#8c8171}
+.detail strong,.detail a{font-weight:750;color:#3a332c;overflow-wrap:anywhere;text-align:right}
+.contactHero{min-height:415px}
+.contactHero .heroGrid{min-height:455px}
+.contactSection{padding:80px 0 110px}
+.contactLayout{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:85px;align-items:start}
+.formCard{background:#f7f3e9;border:1px solid #e8e1d4;padding:44px}
+.formTitle{font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:400;line-height:1.2;letter-spacing:-1px;margin:0 0 12px}
+.formIntro{color:#746a5e;font-size:13px;line-height:1.75;margin:0 0 28px}
+.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.field{display:flex;flex-direction:column;gap:9px;font-size:11px;font-weight:750;color:#4b453e;margin-bottom:19px}
+.field input,.field select,.field textarea{font:inherit;font-size:13px;font-weight:400;line-height:1.5;width:100%;min-width:0;background:#fff;color:#302c25;border:1px solid #d8cebd;border-radius:0;padding:14px 13px;outline-offset:2px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid #ab645a}
+.field textarea{resize:vertical;min-height:140px}
+.field input::placeholder,.field textarea::placeholder{color:#a39b90}
+.formSubmit{display:flex;justify-content:space-between;align-items:center;gap:15px;background:#98332e;color:#fff;border:0;padding:17px 21px;width:100%;text-align:left;font-size:12px;font-weight:800;cursor:pointer}
+.formSubmit:hover{background:#7f2723}
+.formNote{font-size:11px;color:#766d62;line-height:1.65;margin:18px 0 0}
+.formNotice{color:#176a40;font-size:12px;line-height:1.6;margin:14px 0 0}
+@media(max-width:1020px){.heroGrid{gap:37px}.panel{height:330px}.split{gap:50px}.contactLayout{gap:42px}.formCard{padding:32px}.step{padding:28px 19px}.step h3{font-size:21px}}
+@media(max-width:810px){.heroGrid{grid-template-columns:1fr;gap:35px;min-height:0;padding-top:65px;padding-bottom:55px}.panel{max-width:620px;width:100%;height:320px}.split,.contactLayout{grid-template-columns:1fr;gap:32px}.section{padding:76px 0}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid #eae5dc}.bandGrid{grid-template-columns:1fr;gap:25px}.contactHero .heroGrid{min-height:0}.contactSection{padding:70px 0}.sectionIntro{display:block}.sectionIntro .lead{margin-top:20px}}
+@media(max-width:560px){.heroGrid{padding-top:48px;padding-bottom:45px}.title{font-size:clamp(44px,11.3vw,59px);letter-spacing:-1.8px}.lead{font-size:14px;line-height:1.75}.panel{height:285px}.panelTitle{font-size:35px}.section{padding:62px 0}.sectionTitle{font-size:38px}.cards{grid-template-columns:1fr;gap:12px}.card{min-height:0;padding:29px 25px}.card h3{margin:25px 0 10px}.brandStrip{grid-template-columns:1fr}.brandStripItem+.brandStripItem{border-left:0;border-top:1px solid #e6e1d7;padding-left:0}.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid #eae5dc}.step:nth-child(2){border-bottom:1px solid #eae5dc}.step:last-child{border-bottom:0}.step h3{min-height:0;margin-top:23px}.band{padding:55px 0}.formCard{padding:26px 19px}.formTitle{font-size:29px}.formGrid{grid-template-columns:1fr;gap:0}.contactSection{padding:55px 0 70px}.detail{flex-direction:column;gap:9px}.detail strong,.detail a{text-align:left}}
+@media(prefers-reduced-motion:reduce){.bandButton{transition:none}}

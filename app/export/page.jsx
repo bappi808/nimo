@@ -1,4 +1,71 @@
 import Link from 'next/link';
-export const metadata={title:'International Business'};
-const steps=[['01','Explore the portfolio','Browse relevant products and categories.'],['02','Share your market','Tell us the country, channel and products of interest.'],['03','Discuss specifications','Request product, packaging and trade information.'],['04','Build a partnership','Continue commercial and logistics discussions with our team.']];
-export default function Export(){return <><section className="page-intro"><div className="container"><p className="eyebrow red">INTERNATIONAL BUSINESS</p><h1>Made in Bangladesh.<br/><em>Ready for new markets.</em></h1><p>We connect international buyers with the NIMO food portfolio and a clear path to product discussions.</p></div></section><section className="section"><div className="container"><p className="eyebrow red">HOW WE WORK</p><h2>A simpler way to <em>start the conversation.</em></h2><div className="process-grid">{steps.map(([n,t,d])=><article key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p></article>)}</div></div></section><section className="export-banner"><div className="container export-banner-grid"><div><p className="eyebrow">INTERNATIONAL PARTNERS</p><h2>Interested in <em>distributing NIMO?</em></h2></div><div><p>Share your business profile and priority categories. Our team can follow up on product availability and trade details.</p><Link href="/contact" className="button button-yellow">Send Business Inquiry ↗</Link></div></div></section></>}
+import styles from '../premium-pages.module.css';
+
+export const metadata = {
+  title: 'Export Partnerships',
+  description: 'Explore NIMO FMCG food products for international wholesale, import and distribution opportunities.',
+};
+
+const steps = [
+  ['01', 'Explore the collection', 'Discover the NIMO categories that are most relevant to your customers and sales channels.'],
+  ['02', 'Tell us your market', 'Share your country, business profile, product interests and estimated requirements.'],
+  ['03', 'Review trade details', 'Discuss product specifications, packaging, order volumes and relevant documentation.'],
+  ['04', 'Plan the next steps', 'Continue availability, pricing and logistics discussions with the MAAK FOOD team.'],
+];
+
+const topics = ['Product specifications', 'Packaging options', 'Order requirements', 'Export documentation', 'Distribution enquiries'];
+
+export default function Export() {
+  return <div className={styles.shell}>
+    <section className={styles.hero}>
+      <div className={'container ' + styles.heroGrid}>
+        <div>
+          <p className={styles.kicker}>International business · NIMO</p>
+          <h1 className={styles.title}>From our portfolio<br/><em>to your market.</em></h1>
+          <p className={styles.lead}>Explore new business possibilities with NIMO. We connect international importers, wholesalers and distributors with food products from Bangladesh.</p>
+          <Link className={styles.link} href="/products">Explore our products <span aria-hidden="true">↗</span></Link>
+        </div>
+        <div className={styles.panel}>
+          <p className={styles.panelEyebrow}>Global trade conversations</p>
+          <h2 className={styles.panelTitle}>Bangladesh<br/><span aria-hidden="true">↗</span><br/>Your market</h2>
+          <p className={styles.panelCaption}>Food · Trade · Partnerships</p>
+        </div>
+      </div>
+    </section>
+
+    <section className={styles.section}>
+      <div className="container">
+        <div className={styles.sectionIntro}>
+          <div><p className={styles.kicker}>A straightforward approach</p><h2 className={styles.sectionTitle}>Partnerships begin<br/><em>with a conversation.</em></h2></div>
+          <p className={styles.lead}>Whether you're exploring a new brand or a new category, here's how we can start working together.</p>
+        </div>
+        <div className={styles.steps}>
+          {steps.map(([n, title, description]) => <article key={n} className={styles.step}>
+            <span className={styles.stepNumber}>{n} / 04</span><h3>{title}</h3><p>{description}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className={styles.section + ' ' + styles.sectionLight}>
+      <div className={'container ' + styles.split}>
+        <div>
+          <p className={styles.kicker}>For importers &amp; distributors</p>
+          <h2 className={styles.sectionTitle}>The details that<br/><em>make business work.</em></h2>
+        </div>
+        <div>
+          <p className={styles.prose}>Good trade relationships start with clear information. Tell us what your business needs, and we can discuss the relevant product and commercial details.</p>
+          <div className={styles.tagRow}>{topics.map(t => <span key={t} className={styles.tag}>{t}</span>)}</div>
+          <Link href="/contact" className={styles.link}>Discuss your requirements <span aria-hidden="true">↗</span></Link>
+        </div>
+      </div>
+    </section>
+
+    <section className={styles.band}>
+      <div className={'container ' + styles.bandGrid}>
+        <div><p className={styles.kicker}>Your next opportunity</p><h2 className={styles.bandTitle}>Let's bring NIMO<br/><em>closer to your customers.</em></h2></div>
+        <div><p className={styles.bandText}>Introduce your company and target market. Our team can follow up on suitable products and the next commercial steps.</p><Link href="/contact" className={styles.bandButton}>Send a business inquiry <span aria-hidden="true">↗</span></Link></div>
+      </div>
+    </section>
+  </div>;
+}

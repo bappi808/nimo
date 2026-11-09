@@ -1,9 +1,100 @@
 'use client';
-import {Suspense,useState} from 'react';
+
+import {Suspense, useEffect, useState} from 'react';
 import {useSearchParams} from 'next/navigation';
 import {products} from '@/data/products';
-function Form(){const params=useSearchParams();const initial=params.get('product')||'';const [form,setForm]=useState({name:'',company:'',email:'',country:'',product:initial,message:''});const [notice,setNotice]=useState('');
-function change(e){setForm({...form,[e.target.name]:e.target.value})}
-function submit(e){e.preventDefault();const subject=`NIMO Business Inquiry — ${form.company}`;const body=`Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nCountry: ${form.country}\nProduct interest: ${form.product||'General'}\n\nMessage:\n${form.message}`;setNotice('Your email app will open with the enquiry. Please press Send there to finish.');window.location.href=`mailto:maakfood22@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;}
-return <form className="inquiry-form" onSubmit={submit}><div className="form-row"><label>Full name *<input required name="name" value={form.name} onChange={change} placeholder="Your name"/></label><label>Company name *<input required name="company" value={form.company} onChange={change} placeholder="Company or organization"/></label></div><div className="form-row"><label>Business email *<input required type="email" name="email" value={form.email} onChange={change} placeholder="name@company.com"/></label><label>Country / market *<input required name="country" value={form.country} onChange={change} placeholder="Your country"/></label></div><label>Product of interest<select value={form.product} name="product" onChange={change}><option value="">General business inquiry</option>{products.map(p=><option key={p.slug} value={p.name}>{p.name}</option>)}</select></label><label>Tell us about your requirements *<textarea required rows="5" name="message" value={form.message} onChange={change} placeholder="Products, target market, estimated volume, or any questions"/></label><button className="button button-red" type="submit">Prepare Email Inquiry ↗</button><p className="form-disclaimer">This first-version form opens your email application. It does not yet submit or store information on the website.</p>{notice&&<p role="status" className="form-notice">{notice}</p>}</form>}
-export default function Contact(){return <><section className="page-intro"><div className="container"><p className="eyebrow red">LET'S CONNECT</p><h1>Let's talk <em>business.</em></h1><p>For export, wholesale and distribution inquiries, share a few details with our team.</p></div></section><section className="section"><div className="container contact-grid"><div><p className="eyebrow red">BUSINESS CONTACT</p><h2>New market?<br/><em>New opportunity.</em></h2><p>Tell us about your market and the NIMO products you are exploring.</p><div className="contact-detail"><span>Email</span><a href="mailto:maakfood22@gmail.com">maakfood22@gmail.com</a></div><div className="contact-detail"><span>Country</span><strong>Bangladesh</strong></div></div><Suspense fallback={<div>Loading inquiry form...</div>}><Form/></Suspense></div></section></>}
+import styles from '../premium-pages.module.css';
+
+function ContactForm() {
+  const params = useSearchParams();
+  const incomingProduct = params.get('product') || '';
+  const [form, setForm] = useState({name:'', company:'', email:'', country:'', product:incomingProduct, message:''});
+  const [notice, setNotice] = useState('');
+
+  useEffect(() => {
+    setForm(previous => ({...previous, product:incomingProduct}));
+  }, [incomingProduct]);
+
+  function change(event) {
+    setForm(previous => ({...previous, [event.target.name]:event.target.value}));
+    if (notice) setNotice('');
+  }
+
+  function submit(event) {
+    event.preventDefault();
+    const subject = 'NIMO Business Inquiry — ' + form.company;
+    const body = [
+      'Full name: ' + form.name,
+      'Company: ' + form.company,
+      'Email: ' + form.email,
+      'Country / market: ' + form.country,
+      'Product interest: ' + (form.product || 'General'),
+      '',
+      'Requirements:',
+      form.message
+    ].join('\n');
+    setNotice('Your email application should open with a prepared message. Please press Send in that application to submit the inquiry. Nothing has been sent by this website.');
+    window.location.href = 'mailto:maakfood22@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+
+  return <form className={styles.formCard} onSubmit={submit}>
+    <h2 className={styles.formTitle}>Tell us about your business.</h2>
+    <p className={styles.formIntro}>Introduce your market and requirements. We'll help you start the right conversation.</p>
+
+    <div className={styles.formGrid}>
+      <label className={styles.field}>Full name *<input required autoComplete="name" name="name" value={form.name} onChange={change} placeholder="Your full name"/></label>
+      <label className={styles.field}>Company name *<input required autoComplete="organization" name="company" value={form.company} onChange={change} placeholder="Your business or organization"/></label>
+      <label className={styles.field}>Business email *<input required type="email" autoComplete="email" name="email" value={form.email} onChange={change} placeholder="name@company.com"/></label>
+      <label className={styles.field}>Country / market *<input required autoComplete="country-name" name="country" value={form.country} onChange={change} placeholder="Your country"/></label>
+    </div>
+
+    <label className={styles.field}>Product of interest
+      <select name="product" value={form.product} onChange={change}>
+        <option value="">General business inquiry</option>
+        {products.map(product => <option key={product.slug} value={product.name}>{product.name}</option>)}
+      </select>
+    </label>
+    <label className={styles.field}>Tell us about your requirements *
+      <textarea required rows={5} name="message" value={form.message} onChange={change} placeholder="Your products of interest, market, estimated volumes, or questions"/>
+    </label>
+    <button type="submit" className={styles.formSubmit}>Prepare email inquiry <span aria-hidden="true">↗</span></button>
+    <p className={styles.formNote}>This preview uses your device's email application. It does not store or submit information directly. Review the drafted message and press Send in your email application.</p>
+    {notice && <p className={styles.formNotice} role="status">{notice}</p>}
+  </form>;
+}
+
+export default function Contact() {
+  return <div className={styles.shell}>
+    <section className={styles.hero + ' ' + styles.contactHero}>
+      <div className={'container ' + styles.heroGrid}>
+        <div>
+          <p className={styles.kicker}>Get in touch · MAAK FOOD &amp; NIMO</p>
+          <h1 className={styles.title}>Great partnerships<br/><em>start here.</em></h1>
+          <p className={styles.lead}>Looking for NIMO products for your country or business? Tell us what you need, and let's begin the conversation.</p>
+        </div>
+        <div className={styles.panel}>
+          <p className={styles.panelEyebrow}>Business enquiries welcome</p>
+          <h2 className={styles.panelTitle}>Let's connect<br/>across markets.</h2>
+          <p className={styles.panelCaption}>Import · Wholesale · Distribution</p>
+        </div>
+      </div>
+    </section>
+
+    <section className={styles.contactSection}>
+      <div className={'container ' + styles.contactLayout}>
+        <div>
+          <p className={styles.kicker}>Business contact</p>
+          <h2 className={styles.sectionTitle}>We'd love to hear<br/><em>from you.</em></h2>
+          <p className={styles.prose} style={{marginTop:23}}>Share a few details about your company and market. For product specifications, availability and trade enquiries, contact our team.</p>
+          <div className={styles.detailList}>
+            <div className={styles.detail}><span>Email</span><a href="mailto:maakfood22@gmail.com">maakfood22@gmail.com</a></div>
+            <div className={styles.detail}><span>Based in</span><strong>Bangladesh</strong></div>
+            <div className={styles.detail}><span>Enquiries</span><strong>Import · Wholesale · Distribution</strong></div>
+          </div>
+          <p className={styles.prose} style={{marginTop:31,fontSize:13}}>You can also email us directly using the address above if the form cannot open your email application.</p>
+        </div>
+        <Suspense fallback={<div className={styles.formCard}>Loading inquiry form...</div>}><ContactForm/></Suspense>
+      </div>
+    </section>
+  </div>;
+}
