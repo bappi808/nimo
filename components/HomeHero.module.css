@@ -1,0 +1,120 @@
+.hero {
+  background: #f7f3e9;
+  color: #302c25;
+  overflow: hidden;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.06fr;
+  align-items: center;
+  gap: 44px;
+  padding-top: 78px;
+  padding-bottom: 68px;
+  min-height: 660px;
+}
+
+.copy { min-width: 0; }
+.eyebrow {
+  color: #96352e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.3px;
+  line-height: 1.7;
+  text-transform: uppercase;
+  margin: 0 0 28px;
+}
+
+.copy h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(46px, 4.6vw, 67px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -2.6px;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.copy h1 em { color: #8e302b; font-weight: 400; }
+.description {
+  max-width: 410px;
+  color: #6b6459;
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 27px 0 0;
+}
+
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 32px; }
+.primary, .secondary { font-size: 12px; font-weight: 700; line-height: 1.5; }
+.primary { display: inline-flex; justify-content: space-between; gap: 24px; padding: 17px 21px; background: #982e2b; color: #fff; border: 1px solid #982e2b; transition: background .2s; }
+.primary:hover { background: #76221f; }
+.secondary { padding: 12px 0; border-bottom: 1px solid #b7ac99; }
+.secondary span { margin-left: 8px; }
+.hero a:focus-visible { outline: 2px solid #982e2b; outline-offset: 5px; }
+.signature { display: flex; align-items: center; gap: 7px; margin-top: 46px; color: #71695c; font-size: 10px; letter-spacing: .4px; }
+.signature > span { width: 24px; height: 1px; background: #a59880; margin-right: 5px; }
+.signature strong { font-size: 10px; letter-spacing: 1px; color: #504839; }
+
+.showcase { min-width: 0; }
+.collectionHeading { display: flex; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid #d9d0be; color: #71695c; font-size: 9px; text-transform: uppercase; letter-spacing: 2px; }
+.products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: 12px; padding-top: 32px; }
+.product { min-width: 0; display: block; }
+.product:nth-child(2) { margin-bottom: 35px; }
+.photograph { display: flex; align-items: center; justify-content: center; height: 245px; padding: 15px 7px; background: linear-gradient(150deg, #f1eadc, #e5dcc9); border-radius: 90px 90px 2px 2px; }
+.product:nth-child(2) .photograph { height: 290px; background: linear-gradient(150deg, #eee5d6, #ddcfb5); }
+.photograph img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 8px #4c382c21); transition: transform .25s; }
+.product:hover img { transform: translateY(-5px); }
+.imageFallback { max-width: 115px; text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-style: italic; line-height: 1.6; color: #706653; }
+.productCaption { padding-top: 16px; }
+.category { display: block; font-size: 8px; line-height: 1.5; letter-spacing: 1px; text-transform: uppercase; color: #746959; }
+.productName { display: block; margin-top: 7px; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; line-height: 1.25; }
+.productSize { display: flex; justify-content: space-between; margin-top: 8px; color: #706653; font-size: 10px; }
+.productSize span { color: #982e2b; font-size: 14px; }
+.collectionNote { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 13px; text-align: center; color: #746959; margin: 28px 0 0; }
+.bottomLine { display: flex; justify-content: space-between; align-items: center; gap: 20px; position: relative; padding-top: 22px; padding-bottom: 22px; color: #746959; font-size: 9px; letter-spacing: 1.1px; text-transform: uppercase; }
+.bottomLine::before { content: ''; position: absolute; top: 0; left: 26px; right: 26px; border-top: 1px solid #d9d0be; }
+.bottomLine a { color: #8e302b; }
+.bottomLine a span { margin-left: 12px; }
+
+@media (max-width: 1080px) {
+  .layout { gap: 28px; }
+  .copy h1 { font-size: 51px; }
+  .actions { gap: 13px; }
+  .photograph { height: 215px; }
+  .product:nth-child(2) .photograph { height: 255px; }
+}
+
+@media (max-width: 810px) {
+  .layout { grid-template-columns: 1fr; gap: 58px; padding-top: 58px; padding-bottom: 40px; }
+  .copy { max-width: 600px; }
+  .copy h1 { font-size: clamp(47px, 8vw, 65px); }
+  .description { max-width: 480px; }
+  .signature { margin-top: 30px; }
+  .showcase { max-width: 580px; width: 100%; margin: 0 auto; }
+  .photograph { height: 260px; }
+  .product:nth-child(2) .photograph { height: 300px; }
+  .bottomLine > span:nth-child(2) { display: none; }
+}
+
+@media (max-width: 420px) {
+  .layout { gap: 40px; padding-top: 44px; }
+  .eyebrow { font-size: 9px; letter-spacing: 1.7px; margin-bottom: 22px; }
+  .copy h1 { font-size: 44px; letter-spacing: -1.8px; }
+  .description { font-size: 14px; margin-top: 22px; }
+  .actions { align-items: flex-start; flex-direction: column; gap: 10px; margin-top: 25px; }
+  .products { gap: 8px; padding-top: 27px; }
+  .photograph { height: 175px; padding: 10px 4px; }
+  .product:nth-child(2) .photograph { height: 215px; }
+  .product:nth-child(2) { margin-bottom: 20px; }
+  .category { font-size: 7px; letter-spacing: .4px; }
+  .productName { font-size: 15px; }
+  .imageFallback { font-size: 12px; padding: 5px; }
+  .collectionNote { font-size: 12px; }
+  .bottomLine { font-size: 8px; gap: 15px; letter-spacing: .5px; }
+  .bottomLine::before { left: 20px; right: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photograph img, .primary { transition: none; }
+  .product:hover img { transform: none; }
+}

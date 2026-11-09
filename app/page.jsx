@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
-import {highlights,imageUrl,products} from '@/data/products';
+import {highlights} from '@/data/products';
+import HomeHero from '@/components/HomeHero';
 const categories=[['Rice & Rice Products','Rice'],['Snacks','Snacks'],['Pickles & Condiments','Pickles'],['Bakery','Bakery'],['Spices & Seasonings','Spices']];
 export default function Home(){return <>
- <section className="hero"><div className="container hero-grid">
-  <div className="hero-copy"><div className="kicker"><span className="line"/> BANGLADESH-MADE. WORLD-READY.</div><h1>Food that feels like <em>home.</em><br/>Made for the <span>world.</span></h1><p>Meet NIMO—everyday food favorites by MAAK FOOD, created for families, retailers and distribution partners across global markets.</p><div className="hero-actions"><Link href="/products" className="button button-yellow">Discover Our Products ↗</Link><Link href="/contact" className="button button-outline-light">Become a Distributor</Link></div><div className="hero-footnote">PRODUCT DISCOVERY <span>•</span> EXPORT PARTNERSHIPS <span>•</span> BANGLADESH</div></div>
-  <div className="hero-stage" aria-label="NIMO product range"><span className="hero-halo"/><span className="hero-orbit orbit-one"/><span className="hero-orbit orbit-two"/>{[products[7],products[4],products[3],products[2]].map((p,i)=><img className={`hero-pack hero-pack-${i+1}`} key={p.slug} src={imageUrl(p)} alt={p.name}/>)}<div className="hero-stage-caption">THE NIMO COLLECTION <span>2026</span></div></div>
- </div></section>
+ <HomeHero/>
  <section className="trust-strip"><div className="container trust-grid"><div><strong>Bangladesh</strong><span>Manufacturing origin</span></div><div><strong>Multi-category</strong><span>FMCG food portfolio</span></div><div><strong>Buyer focused</strong><span>International coordination</span></div><div><strong>Product-led</strong><span>Export conversations</span></div></div></section>
  <section className="section section-cats"><div className="container"><div className="section-head"><div><p className="eyebrow red">EXPLORE THE COLLECTION</p><h2>Something for <em>every shelf.</em></h2></div><Link href="/products" className="text-link">View all products ↗</Link></div><div className="category-row">{categories.map(([key,label],i)=><Link href={`/products?category=${encodeURIComponent(key)}`} key={key} className="category-pill"><span className="category-num">0{i+1}</span><strong>{label}</strong><span>↗</span></Link>)}</div></div></section>
  <section className="section section-products"><div className="container"><div className="section-head"><div><p className="eyebrow red">POPULAR PICKS</p><h2>Discover the NIMO <em>range.</em></h2><p className="section-desc">Explore our food portfolio. Product specifications and trade details are available on request.</p></div><Link href="/products" className="text-link">Explore full catalogue ↗</Link></div><div className="product-grid">{highlights.map(p=><ProductCard key={p.slug} product={p}/>)}</div></div></section>
