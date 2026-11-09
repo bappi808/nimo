@@ -13,7 +13,7 @@ const values = [
 ];
 
 export default function About() {
-  return <main className={styles.shell}>
+  return <div className={styles.shell}>
     <section className={styles.hero}>
       <div className={'container ' + styles.heroGrid}>
         <div>
@@ -68,5 +68,5 @@ export default function About() {
         <div><p className={styles.bandText}>Interested in bringing NIMO products to your market? We welcome conversations with importers, wholesalers and distributors.</p><Link className={styles.bandButton} href="/contact">Start a business inquiry <span aria-hidden="true">↗</span></Link></div>
       </div>
     </section>
-  </main>;
+  </div>;
 }
