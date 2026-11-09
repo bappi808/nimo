@@ -1,3 +1,72 @@
 import Link from 'next/link';
-export const metadata={title:'Our Story'};
-export default function About(){return <><section className="page-intro"><div className="container"><p className="eyebrow red">WHO WE ARE</p><h1>One company.<br/><em>One flagship food brand.</em></h1><p>MAAK FOOD is a Bangladesh-based food manufacturer and exporter. NIMO is our flagship consumer brand.</p></div></section><section className="section"><div className="container about-grid"><div className="about-brand"><img src="/nimo-logo.png" alt="Official NIMO logo"/><p>Everyday food, shared across markets.</p></div><div><p className="eyebrow red">MAAK FOOD × NIMO</p><h2>From our home<br/>to your market.</h2><p>MAAK FOOD combines product manufacturing, processing and international business coordination. Our NIMO portfolio is designed to introduce familiar food categories to importers, distributors and retailers.</p><div className="about-benefits"><div><strong>01 / Our origin</strong><span>Bangladesh manufacturing base</span></div><div><strong>02 / Our focus</strong><span>Everyday FMCG food categories</span></div><div><strong>03 / Our approach</strong><span>Product-driven buyer partnerships</span></div></div><Link href="/export" className="button button-red">Explore Export Opportunities ↗</Link></div></div></section></>}
+import styles from '../premium-pages.module.css';
+
+export const metadata = {
+  title: 'Our Story',
+  description: 'Discover the relationship between MAAK FOOD, a Bangladesh-based FMCG food manufacturer and exporter, and NIMO, its flagship consumer brand.',
+};
+
+const values = [
+  ['01', 'Rooted in Bangladesh', 'Our story begins with familiar foods and a commitment to serving everyday needs.'],
+  ['02', 'Built around products', 'A growing food portfolio designed for discovery across retail and wholesale channels.'],
+  ['03', 'Open to new markets', 'We work with importers and distributors to explore commercial opportunities.'],
+];
+
+export default function About() {
+  return <main className={styles.shell}>
+    <section className={styles.hero}>
+      <div className={'container ' + styles.heroGrid}>
+        <div>
+          <p className={styles.kicker}>Our story · MAAK FOOD &amp; NIMO</p>
+          <h1 className={styles.title}>Rooted in Bangladesh.<br/><em>Made to be shared.</em></h1>
+          <p className={styles.lead}>Meet the people and purpose behind NIMO—everyday foods brought to you by MAAK FOOD, a Bangladesh-based manufacturer and exporter.</p>
+          <span className={styles.pill}>Made in Bangladesh</span>
+        </div>
+        <div className={styles.panel}>
+          <p className={styles.panelEyebrow}>Our flagship consumer brand</p>
+          <img className={styles.panelLogo} src="/nimo-logo.png" alt="Official NIMO logo" width="270" height="108"/>
+          <p className={styles.panelCaption}>A food brand by MAAK FOOD</p>
+        </div>
+      </div>
+    </section>
+
+    <section className={styles.section}>
+      <div className={'container ' + styles.split}>
+        <div>
+          <p className={styles.kicker}>The company behind the brand</p>
+          <h2 className={styles.sectionTitle}>Good food brings<br/><em>people together.</em></h2>
+          <div className={styles.brandStrip}>
+            <div className={styles.brandStripItem}><strong>MAAK FOOD</strong><span>Food manufacturing &amp; export business</span></div>
+            <div className={styles.brandStripItem}><strong>NIMO</strong><span>Flagship consumer brand</span></div>
+          </div>
+        </div>
+        <div>
+          <p className={styles.prose}>MAAK FOOD brings together food manufacturing, product development and international business coordination. NIMO is the name through which we share familiar food products with households, retailers and trade partners.</p>
+          <p className={styles.prose}>From rice products and snacks to pantry essentials, we believe in creating food choices that feel approachable and relevant—while building meaningful connections with new markets.</p>
+          <Link className={styles.link} href="/products">Explore the NIMO collection <span aria-hidden="true">↗</span></Link>
+        </div>
+      </div>
+    </section>
+
+    <section className={styles.section + ' ' + styles.sectionLight}>
+      <div className="container">
+        <div className={styles.sectionIntro}>
+          <div><p className={styles.kicker}>What matters to us</p><h2 className={styles.sectionTitle}>Everyday food.<br/><em>Thoughtful relationships.</em></h2></div>
+          <p className={styles.lead}>We bring a product-first approach to conversations with consumers and global business partners.</p>
+        </div>
+        <div className={styles.cards}>
+          {values.map(([n, title, description]) => <article key={n} className={styles.card}>
+            <span className={styles.cardIndex}>{n} / NIMO</span><h3>{title}</h3><p>{description}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    <section className={styles.band}>
+      <div className={'container ' + styles.bandGrid}>
+        <div><p className={styles.kicker}>Let's grow together</p><h2 className={styles.bandTitle}>A shared taste.<br/><em>A wider world.</em></h2></div>
+        <div><p className={styles.bandText}>Interested in bringing NIMO products to your market? We welcome conversations with importers, wholesalers and distributors.</p><Link className={styles.bandButton} href="/contact">Start a business inquiry <span aria-hidden="true">↗</span></Link></div>
+      </div>
+    </section>
+  </main>;
+}
