@@ -2,7 +2,7 @@
 // Source image URLs temporarily reference the CURRENT nimofood.com website.
 // IMPORTANT: Copy the official images into public/products/cutouts BEFORE moving
 // nimofood.com to this Vercel project, then set IMAGE_BASE = '' below.
-export const IMAGE_BASE = 'https://www.nimofood.com';
+export const IMAGE_BASE = '';
 
 export const products = [
   {slug:'mango-pickle', name:'NIMO Mango Pickle', category:'Pickles & Condiments', size:'Ask for pack size', image:'mango-pickle.webp'},
