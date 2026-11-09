@@ -64,7 +64,7 @@ function ContactForm() {
 }
 
 export default function Contact() {
-  return <main className={styles.shell}>
+  return <div className={styles.shell}>
     <section className={styles.hero + ' ' + styles.contactHero}>
       <div className={'container ' + styles.heroGrid}>
         <div>
@@ -96,5 +96,5 @@ export default function Contact() {
         <Suspense fallback={<div className={styles.formCard}>Loading inquiry form...</div>}><ContactForm/></Suspense>
       </div>
     </section>
-  </main>;
+  </div>;
 }
