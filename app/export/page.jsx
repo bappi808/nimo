@@ -16,7 +16,7 @@ const steps = [
 const topics = ['Product specifications', 'Packaging options', 'Order requirements', 'Export documentation', 'Distribution enquiries'];
 
 export default function Export() {
-  return <main className={styles.shell}>
+  return <div className={styles.shell}>
     <section className={styles.hero}>
       <div className={'container ' + styles.heroGrid}>
         <div>
@@ -67,5 +67,5 @@ export default function Export() {
         <div><p className={styles.bandText}>Introduce your company and target market. Our team can follow up on suitable products and the next commercial steps.</p><Link href="/contact" className={styles.bandButton}>Send a business inquiry <span aria-hidden="true">↗</span></Link></div>
       </div>
     </section>
-  </main>;
+  </div>;
 }
