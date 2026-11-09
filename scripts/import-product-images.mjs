@@ -43,5 +43,8 @@ if (failures.length) {
   console.error('Migration incomplete; do not change image base or domain:\n' + failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log('All', filenames.length, 'genuine WebP files imported. Visually review before cutover.');
+  const originalBase = "export const IMAGE_BASE = 'https://www.nimofood.com';";
+  if (!data.includes(originalBase)) throw new Error('IMAGE_BASE setting differs; do not change source silently');
+  await fs.writeFile(path.join(root, 'data/products.js'), data.replace(originalBase, "export const IMAGE_BASE = '';"));
+  console.log('All', filenames.length, 'genuine WebP files imported and switched to local URLs. Visually review before cutover.');
 }
