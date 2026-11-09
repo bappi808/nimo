@@ -47,6 +47,22 @@ try {
   }
   console.log('PASS all 14 local official product photos');
 
+  // Every catalogue product must have its own healthy, pre-rendered detail route.
+  const slugs = [...new Set([...files.matchAll(/slug:\s*'([^']+)'/g)].map(match => match[1]))];
+  assert.equal(slugs.length, 14, 'Expected 14 unique product detail URLs');
+  for (const slug of slugs) {
+    const response = await request('/products/' + slug);
+    assert.equal(response.status, 200, 'Product detail route unavailable: ' + slug);
+  }
+  console.log('PASS all 14 product detail routes');
+
+  // Category tiles on the homepage must reflect all catalogue categories.
+  const homeHtml = await (await request('/')).text();
+  for (const label of ['Rice', 'Snacks', 'Pickles', 'Bakery', 'Spices', 'Beverages', 'Herbs', 'Oils']) {
+    assert(homeHtml.includes('>' + label + '</strong>'), 'Homepage missing category: ' + label);
+  }
+  console.log('PASS all eight homepage category links');
+
   const robots = await (await request('/robots.txt')).text();
   assert.match(robots, /Disallow:\s*\//, 'Preview must not be indexed');
   const missing = await request('/this-route-does-not-exist');
